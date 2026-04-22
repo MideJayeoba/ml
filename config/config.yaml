@@ -1,0 +1,75 @@
+# ─────────────────────────────────────────────────────────────
+# Yoruba Health Whisper – Training Configuration
+# ─────────────────────────────────────────────────────────────
+
+# Model
+model:
+  name: "openai/whisper-small"   # Alternatives: whisper-tiny, whisper-medium, whisper-large-v3
+  language: "yo"                 # ISO 639-1 code for Yoruba
+  task: "transcribe"             # "transcribe" or "translate"
+
+# Dataset
+dataset:
+  # Primary source: Mozilla Common Voice 11 Yoruba
+  primary:
+    path: "mozilla-foundation/common_voice_11_0"
+    name: "yo"                   # Yoruba config name
+    splits:
+      train: "train"
+      validation: "validation"
+      test: "test"
+
+  # Secondary source: FLEURS Yoruba (higher audio quality)
+  secondary:
+    path: "google/fleurs"
+    name: "yo_ng"
+    splits:
+      train: "train"
+      validation: "validation"
+      test: "test"
+
+  # Health vocabulary file path (added to tokenizer)
+  health_vocab_path: "data/yoruba_health_vocab.txt"
+
+  # Audio settings (Whisper expects 16 kHz mono)
+  audio_sampling_rate: 16000
+  max_audio_duration_seconds: 30.0
+  min_audio_duration_seconds: 0.5
+
+# Training
+training:
+  output_dir: "checkpoints/yoruba-health-whisper"
+  max_steps: 4000
+  warmup_steps: 500
+
+  per_device_train_batch_size: 16
+  per_device_eval_batch_size: 8
+  gradient_accumulation_steps: 2   # effective batch = 16 * 2 = 32
+
+  learning_rate: 1.0e-5
+  weight_decay: 0.01
+  lr_scheduler_type: "linear"
+
+  fp16: true                       # Set to false if running on CPU or MPS
+  bf16: false                      # Use true for Ampere+ GPUs (A100, etc.)
+
+  evaluation_strategy: "steps"
+  eval_steps: 1000
+  save_steps: 1000
+  logging_steps: 25
+  load_best_model_at_end: true
+  metric_for_best_model: "wer"
+  greater_is_better: false
+
+  generation_max_length: 225
+  predict_with_generate: true
+
+  report_to: "tensorboard"         # "wandb" | "tensorboard" | "none"
+  push_to_hub: false               # Set true to upload to Hugging Face Hub
+
+# Preprocessing
+preprocessing:
+  # Normalise transcripts: lowercase, strip punctuation
+  normalise_text: true
+  # Remove samples whose transcription is empty after normalisation
+  remove_empty: true
