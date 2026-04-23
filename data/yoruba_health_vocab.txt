@@ -1,0 +1,111 @@
+# Yoruba Health Vocabulary
+# ─────────────────────────────────────────────────────────────
+# Curated list of Yoruba health-related terms.
+# These tokens are added to the Whisper tokenizer during fine-tuning
+# to improve recognition of domain-specific vocabulary.
+# Format: one term per line (blank lines and lines starting with # are ignored).
+# ─────────────────────────────────────────────────────────────
+
+# ── General health / medical greetings ──────────────────────
+ilera
+aisan
+dokita
+nọọsi
+ile-iwosan
+egbogi
+atunse
+oogun
+
+# ── Symptoms ─────────────────────────────────────────────────
+orififo
+iba
+eebi
+gbuuru
+irora
+wiwu
+ẹjẹ
+ikọ
+mímí
+ailera
+didi
+gbigbona
+
+# ── Body parts ───────────────────────────────────────────────
+ara
+ori
+ọpọlọ
+ọkan
+ẹdọ
+ẹdọfóró
+ikùn
+ojú
+etí
+imú
+ẹnu
+ọwọ
+ese
+egungun
+awọ ara
+iṣan
+
+# ── Common conditions ────────────────────────────────────────
+àtọgbẹ
+ẹjẹ-ọpọlọ
+iba ìdọtí
+ibà pápá
+malaria
+ẹjẹ giga
+cholera
+typhoid
+jaundice
+àrùn
+àrùn àgbàdo
+gbogun
+
+# ── Medical procedures / treatment ───────────────────────────
+itọju
+abere
+ẹjẹ-idanwo
+iṣẹ abẹ
+iwosan
+ifunni
+oogun apakokoro
+ajesara
+vaccination
+x-ray
+olutirasandi
+ultrasound
+
+# ── Health questions / phrases ────────────────────────────────
+kini aisan rẹ
+ibo ni o nrun
+melo ni ọjọ
+ṣe o ti mu oogun
+dokita wo ni o ri
+nibẹ ni irora kankan
+jẹ ki a wo ẹ
+mo nilo iranlọwọ
+ẹ jọ ẹ ran mi lọwọ
+bi o ṣe pẹ to
+
+# ── Nutrition / lifestyle ─────────────────────────────────────
+ounjẹ
+omi
+ewe
+ẹyin
+ẹran
+ẹja
+adie
+burẹdi
+iresi
+iṣan ara
+omi pupọ
+sun
+
+# ── Emergency ─────────────────────────────────────────────────
+pajawiri
+iranran
+ẹjẹ ṣan
+ọkan dẹkun lilu
+wọle kiakia
+pe ambulance
